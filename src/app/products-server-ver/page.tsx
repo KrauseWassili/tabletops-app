@@ -2,7 +2,7 @@ import Product from "../types/Product";
 
 const Page = async () => {
   const res = await fetch("https://dummyjson.com/products", {
-    cache: "no-store",
+    cache: "force-cache",
     next: { revalidate: 60 },
   });
 

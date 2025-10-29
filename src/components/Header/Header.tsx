@@ -27,10 +27,10 @@ export default function Header() {
         <Link className={link} href="/users-server-ver">
           Users-Server
         </Link>
-        <Link className={link} href="/product-client-ver">
+        <Link className={link} href="/products-client-ver">
           Product-Client
         </Link>
-        <Link className={link} href="/product-server-ver">
+        <Link className={link} href="/products-server-ver">
           Product-Server
         </Link>
       </nav>
