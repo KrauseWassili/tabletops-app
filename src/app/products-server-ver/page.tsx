@@ -1,24 +1,18 @@
-import Product from "../types/Product";
+import { ProductCard } from "@/components/ProductCard/ProductCard";
+import { Product } from "../types/Product";
 
-const Page = async () => {
-  const res = await fetch("https://dummyjson.com/products", {
-    cache: "force-cache",
-    next: { revalidate: 60 },
-  });
-
+const ProductsServerVersion = async () => {
+  const res = await fetch("https://dummyjson.com/products");
   const { products } = await res.json();
 
   return (
-    <div className="m-3">
-      <h1 className="m-4 font-extrabold text-2xl">Products</h1>
-      <ul>
+    <div className="container mx-auto py-8">
+      <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {products.map((p: Product) => (
-          <li key={p.id} className="m-4 bg-blue-50">
-            <h2 className="font-bold">
-              {p.id}. {p.title}
-            </h2>
-            <p className="text-gray-700 ">{p.description}</p>
-            <p>Price: {p.price} €</p>
+          <li key={p.id} className="col-span-1">
+            <div className="group rounded-lg bg-card text-card-foreground ring-1 ring-ring hover:shadow-lg transition-shadow">
+              <ProductCard product={p} />
+            </div>
           </li>
         ))}
       </ul>
@@ -26,4 +20,4 @@ const Page = async () => {
   );
 };
 
-export default Page;
+export default ProductsServerVersion;
