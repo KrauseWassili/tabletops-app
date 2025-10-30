@@ -15,6 +15,6 @@ export default function ThemeToggle() {
       return null;
   }
 
-  return <button type="button" onClick={()=>setTheme(resolvedTheme ==="dark"? "light" :"dark")} className="bg-theme p-2 rounded-2xl">Change theme</button>
+  return <button type="button" onClick={()=>setTheme(resolvedTheme ==="dark"? "light" :"dark")} className="bg-importantbtn p-2 rounded-2xl">Change theme</button>
   
 }
