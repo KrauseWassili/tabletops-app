@@ -1,37 +1,23 @@
 import { db } from "@/db";
-import { eventTable } from "@/db/schema";
-const Events = async () => {
-  const events = await db.select().from(eventTable);
+import { events as eventsTable } from "@/db/schema";
+
+const EventsPage = async ({}) => {
+  const events = await db.select().from(eventsTable);
   return (
-    <main className="min-h-screen bg-linear-to-b from-gray-100 to-gray-200 py-12">
-      <div className="max-w-5xl mx-auto px-4">
-        <h1 className="text-2xl font-bold mb-6">Events</h1>
-        <ul className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
-          {events.map((event) => (
-            <li
-              key={event.id}
-              className="bg-white rounded-lg shadow-sm p-5 hover:shadow-md transition-shadow duration-150"
-            >
-              <h3 className="text-lg font-semibold text-gray-900 mb-2 truncate">
-                {event.name}
-              </h3>
-              <p
-                className="text-sm text-gray-600 overflow-hidden"
-                style={{
-                  display: "-webkit-box",
-                  WebkitLineClamp: 3,
-                  WebkitBoxOrient: "vertical",
-                }}
-              >
-                {event.description}
-              </p>
-            </li>
-          ))}
-        </ul>
-      </div>
-    </main>
+    <div className="p-8">
+      <section className="max-w-4xl mx-auto">
+      <h2 className="text-3xl font-bold mb-6 text-gray-800">Events</h2>
+      <ul className="space-y-4">
+        {events.map((event) => (
+        <li key={event.id} className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+          <h3 className="text-xl font-semibold text-gray-700 mb-2">{event.name}</h3>
+          <p className="text-gray-600">{event.description}</p>
+        </li>
+        ))}
+      </ul>
+      </section>
+    </div>
   );
 };
-export default Events;
 
-
+export default EventsPage;
